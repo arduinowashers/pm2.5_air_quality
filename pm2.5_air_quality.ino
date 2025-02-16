@@ -29,28 +29,43 @@ float readDustLevel() {
 }
 
 void updateLED(float dustLevel) {
-  if (dustLevel < 50) {      
+  if (dustLevel < 15) {      
     analogWrite(redPin, 0);
-    analogWrite(greenPin, 255);
-    analogWrite(bluePin, 0);  // Зелено
+    analogWrite(greenPin, 63);
+    analogWrite(bluePin, 0);
+    Serial.println("Excellent");  
   } 
-  else if (dustLevel < 100) { 
-    analogWrite(redPin, 255);
-    analogWrite(greenPin, 255);
-    analogWrite(bluePin, 0);  // Жълто
+  else if (dustLevel < 40) { 
+    analogWrite(redPin, 63);
+    analogWrite(greenPin, 15);
+    analogWrite(bluePin, 0); 
+    Serial.println("Good");   
   } 
-  else if (dustLevel < 150) { 
-    analogWrite(redPin, 255);
-    analogWrite(greenPin, 165);
-    analogWrite(bluePin, 0);  // Оранжево
+  else if (dustLevel < 65) { 
+    analogWrite(redPin, 63);
+    analogWrite(greenPin, 5);
+    analogWrite(bluePin, 0); 
+    Serial.println("Mild");  
   } 
-  else {                      
-    analogWrite(redPin, 255);
+  else if (dustLevel < 150) {                      
+    analogWrite(redPin, 63);
     analogWrite(greenPin, 0);
-    analogWrite(bluePin, 0);  // Червено
+    analogWrite(bluePin, 0);  
+    Serial.println("Moderate");
+  }
+  else if (dustLevel < 250) {                      
+    analogWrite(redPin, 63);
+    analogWrite(greenPin, 0);
+    analogWrite(bluePin, 20);
+    Serial.println("Severe");
+  }
+  else {                      
+    analogWrite(redPin, 6);
+    analogWrite(greenPin, 0);
+    analogWrite(bluePin, 2);
+    Serial.println("Serious");
   }
 }
-
 void loop() {
   float dustLevel = readDustLevel();
   Serial.print("Dust Density: ");
@@ -59,5 +74,5 @@ void loop() {
 
   updateLED(dustLevel);  
 
-  delay(1000);
+  delay(3000);
 }
