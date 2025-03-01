@@ -28,6 +28,26 @@ float readDustLevel() {
 
   return dustDensity;
 }
+void updateLED(float dustLevel) {
+  if (dustLevel < 15) {      
+    Serial.println("Excellent");  
+  } 
+  else if (dustLevel < 40) { 
+    Serial.println("Good");   
+  } 
+  else if (dustLevel < 65) { 
+    Serial.println("Mild");  
+  } 
+  else if (dustLevel < 150) {                      
+    Serial.println("Moderate");
+  }
+  else if (dustLevel < 250) {                      
+    Serial.println("Severe");
+  }
+  else {                      
+    Serial.println("Serious");
+  }
+}
 
 void loop() {
   float dustLevel = readDustLevel();
