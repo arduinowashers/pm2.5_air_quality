@@ -23,7 +23,7 @@ float readDustLevel() {
   digitalWrite(ledPin, HIGH);  
   delayMicroseconds(40);  
 
-  float voltage = sensorValue * (5.0 / 1024.0);  
+  float voltage = sensorValue / (170 - 0.1);  
   float dustDensity = 170 * voltage - 0.1;  
 
   return dustDensity;
