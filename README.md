@@ -49,3 +49,7 @@ Arduino Nano
 | |
 +----------------+
 ```
+
+
+### Схема за сензора
+https://microcontrollerslab.com/gp2y1014au0f-dust-sensor-pinout-working-applications-datasheet/
